@@ -1,0 +1,100 @@
+<!doctype html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>MiAngular</title>
+      <base href="/">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style type="text/css" media="screen">
+        @import '../../../assets/styles.css';
+      </style>
+
+    </head>
+
+    <body> 
+
+      
+      
+
+<div></div> 
+<form #search="ngForm" (ngSubmit)="searcharticles()">
+
+<div class="container-1">
+
+<input type="search" id="search" placeholder="Search..." name="search" [(ngModel)]="searchString"/>
+<input type="submit" name="Search" value="Search" />
+
+</div>
+
+</form>
+ 
+
+<hr>    
+<div class="table-hover">
+
+      <div class="divTable Table" >
+        <div class="divTableHeading">
+        <div class="divTableRow">
+        <div class="divTableHead">
+          
+          
+          
+          <h1>HN Feed</h1>
+          <h3>We <3 Hacker new!!! </h3>
+        
+        </div>
+        </div>
+        </div>
+        <div class="divTableBody">
+        <div class="divTableRow" *ngFor="let article of article" >
+
+
+        <div class="divTableCell" >
+     
+        <div class="left">
+          <ng-container *ngIf="article.title==null; else elseTemplate" >
+            {{article.story_title}}
+          </ng-container>
+          
+          <ng-template #elseTemplate >
+            {{article.title}}
+          </ng-template>   
+            
+        </div>
+        <div class="center">
+          
+         - {{article.author}}-
+           
+        </div>
+        <div class="right">
+          {{article.created_at | date:'dd-MM-yyyy'}}
+          <a  >
+            <img   class="img" title="Delete article" src="../../../assets/eliminar.png" (click)="this.deleteArticle(article._id)" />
+           </a>
+           
+        </div>
+        
+
+
+
+         
+     
+       
+
+        </div>
+
+
+
+        </div>
+        </div>
+        </div>
+
+
+</div>
+            
+ 
+  
+        
+  </body></html>
+
+ 
